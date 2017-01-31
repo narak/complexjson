@@ -1,15 +1,15 @@
 
 import React from 'react';
 import PureComponent from 'react-pure-render/component';
+import json from '../../test';
+
+import { parse } from 'utils/parse';
 
 import Entry from './Entry';
 
-import json from '../../test';
-
 export default class App extends PureComponent {
-
     state = {
-        obj: JSON.parse(json),
+        obj: parse(json),
         isEditing: false,
     }
 
@@ -33,7 +33,7 @@ export default class App extends PureComponent {
 
     parseJSON = () => {
         try {
-            const obj = JSON.parse(this.refs.textarea.value);
+            const obj = parse(this.refs.textarea.value);
             this.setState({obj});
         } catch (e) {
             alert(e);

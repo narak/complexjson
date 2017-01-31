@@ -3,6 +3,8 @@ import './entry.scss';
 import React from 'react';
 import PureComponent from 'react-pure-render/component';
 import cns from 'classnames';
+import { is as isUuid } from 'utils/uuid';
+import { ref } from 'utils/parse';
 
 export default class Entry extends PureComponent {
     state = {
@@ -60,16 +62,29 @@ export default class Entry extends PureComponent {
             }
 
         } else {
+            let _isUuid;
             if (value === null) {
                 valueCode = 'null';
 
             } else if (!value) {
                 valueCode = 'undefined';
 
+            } else if (typeof value === 'string') {
+                _isUuid = isUuid(value);
+                valueCode = value;
+
             } else {
                 valueCode = value.toString();
             }
-            valueCode = <span className="value">{valueCode}</span>;
+            valueCode = (
+                <span className="value">
+                    {valueCode}
+                    {_isUuid ?
+                        !ref(valueCode) ? ' [missing ref]' : ' [ref]' :
+                        null
+                    }
+                </span>
+            );
         }
 
         // If key_ is not present, its the root entry.
@@ -90,8 +105,8 @@ export default class Entry extends PureComponent {
                             <span className={arrowCls} /> :
                             null
                         }
-                        {key_}: </span>
-                     :
+                        {key_}:&nbsp;
+                    </span> :
                     null
                 }
                 {valueCode}
