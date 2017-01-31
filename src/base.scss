@@ -17,11 +17,10 @@ body {
     min-width: 1080px;
 
     text-rendering: optimizeLegibility;
-    font: 1rem 'Raleway', 'Helvetica Light', Helvetica, sans-serif;
+    font: 1rem 'Roboto Mono', monospace;
     color: #D8DEE9;
-    font-weight: 400;
+    font-weight: 300;
     line-height: 1.45;
-    letter-spacing: 0.7px;
 
     padding: 40px;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1b2b34+0,1d2738+100 */
@@ -30,10 +29,6 @@ body {
     background: -webkit-linear-gradient(-45deg,  #1b2b34 0%,#1d2738 100%); /* Chrome10-25,Safari5.1-6 */
     background: linear-gradient(135deg,  #1b2b34 0%,#1d2738 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1b2b34', endColorstr='#1d2738',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-}
-
-.mono {
-    font-family: 'Roboto Mono', monospace;
 }
 
 a {
@@ -119,7 +114,7 @@ button {
     border-width: 0 0 1px;
     border-radius: 0;
 
-    font: 1rem 'Open Sans', Helvetica, sans-serif;
+    font: 1rem 'Roboto Mono', monospace;
     transition: border-color .3s ease,box-shadow .3s ease;
     outline: none;
 }
