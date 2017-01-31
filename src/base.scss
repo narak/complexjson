@@ -21,7 +21,7 @@ body {
     color: #D8DEE9;
     font-weight: 400;
     line-height: 1.45;
-
+    letter-spacing: 0.7px;
 
     padding: 40px;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1b2b34+0,1d2738+100 */
@@ -137,7 +137,7 @@ button {
  */
 .arrow-base {
     content: " ";
-    display: block;
+    display: inline-block;
     height: 0;
     width: 0;
     border-style: solid;
@@ -146,25 +146,29 @@ button {
 
 .arrow-down {
     @extend .arrow-base;
-    border-color: #BFBFBF transparent transparent;
-    border-width: 5px 5px 0;
+    border-color: #D8DEE9 transparent transparent;
+    border-width: 6px 4px 0;
+    margin-left: -16px;
+    margin-right: 6px;
 }
 .arrow-up {
     @extend .arrow-base;
-    border-color: transparent transparent #BFBFBF;
-    border-width: 0 5px 5px;
+    border-color: transparent transparent #D8DEE9;
+    border-width: 0 4px 6px;
+    margin-left: -16px;
+    margin-right: 6px;
 }
 .arrow-left {
     @extend .arrow-base;
-    border-color: transparent #BFBFBF transparent transparent;
-    border-width: 5px 5px 5px 0;
-    margin-top: -3px;
-    margin-right: 3px;
+    border-color: transparent #D8DEE9 transparent transparent;
+    border-width: 4px 6px 4px 0;
+    margin-left: -14px;
+    margin-right: 6px;
 }
 .arrow-right {
     @extend .arrow-base;
-    border-color: transparent transparent transparent #BFBFBF;
-    border-width: 5px 0 5px 5px;
-    margin-top: -3px;
-    margin-left: 3px;
+    border-color: transparent transparent transparent #D8DEE9;
+    border-width: 4px 0 4px 6px;
+    margin-left: -14px;
+    margin-right: 6px;
 }

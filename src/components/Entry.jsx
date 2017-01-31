@@ -73,14 +73,25 @@ export default class Entry extends PureComponent {
         }
 
         // If key_ is not present, its the root entry.
-        const _cls = cns('entry', {
+        const cls = cns('entry', {
             indent: key_ !== undefined,
             nested
         });
+
+        const arrowCls = cns({
+            'arrow-right': expanded,
+            'arrow-down': !expanded,
+        });
         return (
-            <div className={_cls}>
+            <div className={cls}>
                 {key_ !== undefined ?
-                    <span onClick={nested ? this.toggle : null} className="key">{key_}: </span> :
+                    <span onClick={nested ? this.toggle : null} className="key">
+                        {nested ?
+                            <span className={arrowCls} /> :
+                            null
+                        }
+                        {key_}: </span>
+                     :
                     null
                 }
                 {valueCode}
