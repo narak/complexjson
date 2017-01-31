@@ -6,6 +6,9 @@ import cns from 'classnames';
 import { is as isUuid } from 'utils/uuid';
 import { ref } from 'utils/parse';
 
+import Icon from './Icon';
+import linkIcon from 'images/link.svg';
+
 export default class Entry extends PureComponent {
     state = {
         expanded: true,
@@ -62,7 +65,7 @@ export default class Entry extends PureComponent {
             }
 
         } else {
-            let _isUuid;
+            let isRef;
             if (value === null) {
                 valueCode = 'null';
 
@@ -70,17 +73,20 @@ export default class Entry extends PureComponent {
                 valueCode = 'undefined';
 
             } else if (typeof value === 'string') {
-                _isUuid = isUuid(value);
+                isRef = isUuid(value) && key_ !== 'uuid';
                 valueCode = value;
 
             } else {
                 valueCode = value.toString();
             }
+
+            const ref_ = isRef ? ref(valueCode) : null;
+
             valueCode = (
                 <span className="value">
                     {valueCode}
-                    {_isUuid ?
-                        !ref(valueCode) ? ' [missing ref]' : ' [ref]' :
+                    {isRef ?
+                        <a href={'#' + value} data-tooltip={ref_ && ref_.keypath.join('.')} title={ref_ && ref_.keypath.join('.')}><Icon icon={linkIcon} className={cns({error: !ref_})} /></a> :
                         null
                     }
                 </span>
@@ -97,8 +103,14 @@ export default class Entry extends PureComponent {
             'arrow-right': expanded,
             'arrow-down': !expanded,
         });
+
         return (
             <div className={cls}>
+                {nested && value.uuid ?
+                    <a name={value.uuid} /> :
+                    null
+                }
+
                 {key_ !== undefined ?
                     <span onClick={nested ? this.toggle : null} className="key">
                         {nested ?

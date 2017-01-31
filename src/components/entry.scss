@@ -4,13 +4,15 @@
 }
 
 .entry {
+    color: #C0C5CE;
+
     &:hover {
         > .key {
+            font-weight: 400;
             color: #5FB3B3;
-            font-weight: 700;
         }
         > .value {
-            font-weight: 700;
+            color: #fff;
         }
     }
 }

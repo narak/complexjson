@@ -167,3 +167,43 @@ button {
     margin-left: -14px;
     margin-right: 6px;
 }
+
+/**
+ * Tooltip Styles
+ */
+[data-tooltip] {
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+}
+
+[data-tooltip]:before,
+[data-tooltip]:after {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+}
+
+[data-tooltip]:before {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 5px;
+    padding: 7px;
+    border-radius: 3px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    content: attr(data-tooltip);
+    text-align: center;
+    font-size: .8rem;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+[data-tooltip]:hover:before,
+[data-tooltip]:hover:after {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity .2s;
+}

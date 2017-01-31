@@ -29,7 +29,7 @@ var webpackConfig = {
         root: [path.resolve('./src'), path.resolve('./lib')],
         extensions: ['', '.js', '.jsx', '.json'],
         alias: {
-            images: __dirname + '/images'
+            images: __dirname + '/static/images'
         }
     },
 

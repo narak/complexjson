@@ -15,7 +15,7 @@ function walk(o, keypath = []) {
             walk(value, [...keypath, key]);
 
         } else if (value && typeof value === 'object') {
-            const newKeypath = [...keypath, key];
+            const newKeypath = [...keypath, Array.isArray(o) ? `[${key}]` : key];
             if (value.uuid) {
                 _index[value.uuid] = {
                     keypath: newKeypath,

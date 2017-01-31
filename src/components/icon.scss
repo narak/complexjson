@@ -1,0 +1,18 @@
+
+.icon {
+    width: 16px;
+    height: 16px;
+    display: inline-block;
+    vertical-align: -4px;
+    margin: 0 10px;
+
+    svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+    }
+
+    &.error {
+        color: #EC5f67;
+    }
+}
