@@ -13,7 +13,7 @@ html {
 body {
     height: 100%;
     margin: 0;
-    padding: 4px 0 0;;
+    padding: 10px 40px;
     min-width: 1080px;
 
     text-rendering: optimizeLegibility;
@@ -22,7 +22,6 @@ body {
     font-weight: 300;
     line-height: 1.45;
 
-    padding: 40px;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#1b2b34+0,1d2738+100 */
     background: #1b2b34; /* Old browsers */
     background: -moz-linear-gradient(-45deg,  #1b2b34 0%, #1d2738 100%); /* FF3.6-15 */
@@ -83,49 +82,45 @@ pre {
 }
 
 /** Forms **/
-.form-field {
-    margin: 0 0 15px;
-}
-
-.form-field label {
-    font-size: 10px;
-    text-transform: uppercase;
-    font-weight: 600;
-    color: #5FB3B3;
-    padding: 0 0 0 4px;
-}
-
 button {
-    padding: 2px 4px;
+    padding: 4px 10px;
+    border-radius: 4px;
     line-height: 16px;
-    font: 1rem 'Open Sans', Helvetica, sans-serif;
+    color: #D8DEE9;
+    font: 1rem 'Roboto Mono', monospace;
     outline: none;
+    background: #6699CC;
+    border: none;
 }
 
-.form-field input,
-.form-field textarea,
-.form-field .select-input input,
-.form-field select {
+input,
+textarea,
+select {
     width: 100%;
     padding: 2px 4px;
 
     line-height: 16px;
-    border: 1px solid #DFE5E6;
-    border-width: 0 0 1px;
+    border: 1px solid rgb(0, 0, 0);
+    border-width: 1px;
     border-radius: 0;
 
+    background: rgba(0, 0, 0, 0.32);
+
+    color: #D8DEE9;
     font: 1rem 'Roboto Mono', monospace;
     transition: border-color .3s ease,box-shadow .3s ease;
     outline: none;
 }
 
-.form-field input:focus,
-.form-field textarea:focus,
-.form-field .select-input input:focus,
-.form-field select:focus {
+input:focus,
+textarea:focus,
+select:focus {
     border-color: #08c #0099e6 #0099e6;
 }
 
+.actions {
+    margin: 10px 0;
+}
 
 /**
  * Arrows

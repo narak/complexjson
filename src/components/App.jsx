@@ -1,7 +1,6 @@
 
 import React from 'react';
 import PureComponent from 'react-pure-render/component';
-import json from '../../test';
 
 import { parse } from 'utils/parse';
 
@@ -9,7 +8,7 @@ import Entry from './Entry';
 
 export default class App extends PureComponent {
     state = {
-        obj: parse(json),
+        obj: null,
         isEditing: false,
     }
 
@@ -17,24 +16,43 @@ export default class App extends PureComponent {
         const { obj, isEditing } = this.state;
 
         if (!obj || isEditing) {
+            const taStyle = {
+                height: 'calc(100vh - 80px)'
+            };
+
             return (
                 <div>
-                    <textarea name="obj_string" ref="textarea" defaultValue={obj ? JSON.stringify(obj, null, '    ') : ''} />
-                    <button type="button" onClick={this.parseJSON}>Parse</button>
+                    <div className="actions">
+                        <button type="button" onClick={this.onParse}>Parse</button>
+                    </div>
+                    <textarea name="obj_string"
+                        placeholder="JSON string goes here..."
+                        ref="textarea"
+                        style={taStyle}
+                        defaultValue={obj ? JSON.stringify(obj, null, '    ') : ''} />
                 </div>
             );
 
         } else {
             return (
-                <Entry value={obj} />
+                <div>
+                    <div className="actions">
+                        <button type="button" onClick={this.onEdit}>Edit</button>
+                    </div>
+                    <Entry value={obj} />
+                </div>
             );
         }
     }
 
-    parseJSON = () => {
+    onEdit = () => {
+        this.setState({isEditing: true});
+    }
+
+    onParse = () => {
         try {
             const obj = parse(this.refs.textarea.value);
-            this.setState({obj});
+            this.setState({obj, isEditing: false});
         } catch (e) {
             alert(e);
         }

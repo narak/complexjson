@@ -54,7 +54,6 @@ export function parse(json) {
     _index = {};
 
     walk(obj);
-    console.log(_index);
 
     return obj;
 }
