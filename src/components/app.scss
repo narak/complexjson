@@ -1,0 +1,31 @@
+
+.actions {
+    margin: 10px 0;
+}
+
+.editor-tabs {
+    position: absolute;
+    top: 16px;
+    right: 50px;
+    color: #65737E;
+    font-size: .8em;
+
+    button {
+        font-size: 2rem;
+        background: none;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        margin: 0 0 0 5px;
+        vertical-align: -8px;
+        cursor: pointer;
+
+        &:hover {
+            color: #6699CC;
+        }
+    }
+}
+
+.editor-tab-active {
+    color: #F99157;
+}
