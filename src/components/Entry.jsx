@@ -86,7 +86,14 @@ export default class Entry extends PureComponent {
                 <span className="value">
                     {valueCode}
                     {isRef ?
-                        <a href={'#' + value} data-tooltip={ref_ && ref_.keypath.join('.')} title={ref_ && ref_.keypath.join('.')}><Icon icon={linkIcon} className={cns({error: !ref_})} /></a> :
+                        <a href={'#' + value}
+                            className="ref"
+                            data-tooltip={ref_ && ref_.keypath.join('.')}
+                            title={ref_ && ref_.keypath.join('.')}
+                            >
+                                <Icon icon={linkIcon} className={cns({error: !ref_})} />
+                                {ref_ ? 'ref' : 'missing ref'}
+                        </a> :
                         null
                     }
                 </span>
