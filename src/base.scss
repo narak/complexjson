@@ -83,6 +83,23 @@ pre {
 
 /** Forms **/
 button {
+    padding: 8px 0;
+    border-radius: 4px;
+    line-height: 16px;
+    color: #D8DEE9;
+    font: 1rem 'Roboto Mono', monospace;
+    outline: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+        background: #6699CC;
+        color: #D8DEE9;
+    }
+}
+
+button.primary {
     padding: 4px 10px;
     border-radius: 4px;
     line-height: 16px;
