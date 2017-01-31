@@ -87,11 +87,11 @@ export default class Entry extends PureComponent {
                     {valueCode}
                     {isRef ?
                         <a href={'#' + value}
-                            className="ref"
+                            className={cns('ref', {error: !ref_})}
                             data-tooltip={ref_ && ref_.keypath.join('.')}
                             title={ref_ && ref_.keypath.join('.')}
                             >
-                                <Icon icon={linkIcon} className={cns({error: !ref_})} />
+                                <Icon icon={linkIcon} />
                                 {ref_ ? 'ref' : 'missing ref'}
                         </a> :
                         null
