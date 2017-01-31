@@ -37,9 +37,9 @@
     "webpack-dev-server": "^1.16.2"
   },
   "scripts": {
-    "build": "NODE_ENV=production webpack --progress --optimize-minimize --devtool sourcemap",
-    "build:dev": "webpack --progress --devtool eval",
-    "build:watch": "webpack --watch --progress --devtool eval",
+    "build": "NODE_ENV=production ./node_modules/webpack/bin/webpack.js --progress --optimize-minimize --devtool sourcemap",
+    "build:dev": "./node_modules/webpack/bin/webpack.js --progress --devtool eval",
+    "build:watch": "./node_modules/webpack/bin/webpack.js --watch --progress --devtool eval",
     "build:hot": "./hotloadserver.js"
   },
   "author": "Karan Sheth",

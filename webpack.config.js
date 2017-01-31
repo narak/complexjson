@@ -8,6 +8,9 @@ var isProdBuild = process.env.NODE_ENV === 'production';
 var configGlobals = new webpack.DefinePlugin({
     __DEV__: JSON.stringify(JSON.parse(!isProdBuild)),
     __PROD__: JSON.stringify(JSON.parse(isProdBuild)),
+    'process.env': {
+        NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+    }
 });
 
 var webpackConfig = {
