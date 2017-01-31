@@ -1,7 +1,6 @@
 'use strict';
 
 var webpack = require('webpack'),
-    CommonsChunkPlugin = require("webpack/lib/optimize/CommonsChunkPlugin"),
     path = require('path');
 
 var isProdBuild = process.env.NODE_ENV === 'production';
@@ -34,8 +33,7 @@ var webpackConfig = {
     },
 
     plugins: [
-        configGlobals,
-        new CommonsChunkPlugin("commons.chunk.js"),
+        configGlobals
     ],
 
     module: {
