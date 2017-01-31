@@ -1,0 +1,27 @@
+
+.indent {
+    margin-left: 10px;
+}
+
+.entry {
+    &:hover {
+        > .key {
+            color: #5FB3B3;
+            font-weight: 700;
+        }
+        > .value {
+            font-weight: 700;
+        }
+    }
+}
+
+.nested {
+    &:hover {
+        > .key {
+            color: #6699CC;
+        }
+    }
+    > .key {
+        cursor: pointer;
+    }
+}
