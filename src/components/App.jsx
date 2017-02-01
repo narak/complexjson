@@ -27,7 +27,7 @@ export default class App extends PureComponent {
     state = {
         objects: __objects,
         currentIndex: __currentIndex,
-        isEditing: false,
+        isEditing: true,
     }
 
     render() {
