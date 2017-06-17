@@ -49,6 +49,10 @@
 }
 
 .search-field {
-    width: 500px;
+    width: 350px;
     display: inline-block;
+}
+
+.search-field + .search-field {
+    margin-left: 10px;
 }

@@ -60,7 +60,8 @@ export default class App extends PureComponent {
                         placeholder="JSON string goes here..."
                         ref="textarea"
                         style={taStyle}
-                        defaultValue={obj ? JSON.stringify(obj, null, '    ') : ''} />
+                        defaultValue={obj ? JSON.stringify(obj, null, '    ') : ''}
+                    />
                 </div>
             );
 
@@ -69,12 +70,20 @@ export default class App extends PureComponent {
                 <div className="app-container">
                     <div className="actions">
                         <div className="search-field">
-                            <input name="search_field"
+                            <input name="searchTerm"
                                 type="text"
-                                placeholder="Search (regex works)"
-                                onKeyUp={this.onApplySearch}
-                                onBlur={this.onChangeSearch}
-                                />
+                                placeholder="Highlight"
+                                onKeyUp={this.onApplyInput}
+                                onBlur={this.onChangeInput}
+                            />
+                        </div>
+                        <div className="search-field">
+                            <input name="collapseTerm"
+                                type="text"
+                                placeholder="Collapsed Keys"
+                                onKeyUp={this.onApplyInput}
+                                onBlur={this.onChangeInput}
+                            />
                         </div>
 
                         <div className="editor-tabs">
@@ -85,20 +94,23 @@ export default class App extends PureComponent {
                             {editorTabs}
                         </div>
                     </div>
-                    <Entry value={obj} searchTerm={this.state.searchTerm} />
+                    <Entry value={obj}
+                        searchTerm={this.state.searchTerm}
+                        collapseTerm={this.state.collapseTerm}
+                    />
                 </div>
             );
         }
     }
 
-    onApplySearch = (e) => {
+    onApplyInput = (e) => {
         if (e.keyCode === 13) {
-            this.onChangeSearch(e);
+            this.onChangeInput(e);
         }
     }
 
-    onChangeSearch = (e) => {
-        this.setState({ searchTerm: e.target.value ? new RegExp(e.target.value) : null});
+    onChangeInput = (e) => {
+        this.setState({ [e.target.name]: e.target.value ? new RegExp(e.target.value) : null});
     }
 
     onChangeTab = (currentIndex) => {

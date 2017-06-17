@@ -3,20 +3,25 @@ import './entry.scss';
 import React from 'react';
 import PureComponent from 'react-pure-render/component';
 import cns from 'classnames';
-import { is as isUuid } from 'utils/uuid';
 import { ref } from 'utils/parse';
 
 import Icon from './Icon';
 import linkIcon from 'images/link.svg';
 
 export default class Entry extends PureComponent {
-    state = {
-        expanded: true,
-    }
+    state = {}
 
     render() {
-        const { value, key_, searchTerm } = this.props;
-        const { expanded } = this.state;
+        const { value, key_, searchTerm, collapseTerm } = this.props;
+        let { expanded } = this.state;
+
+        if (expanded === undefined) {
+            if (collapseTerm && collapseTerm.test(key_)) {
+                expanded = false;
+            } else {
+                expanded = true;
+            }
+        }
 
         let nested;
         let valueCode;
@@ -42,6 +47,7 @@ export default class Entry extends PureComponent {
                                     parentKey={key_}
                                     parentValue={value}
                                     searchTerm={searchTerm}
+                                    collapseTerm={collapseTerm}
                                 />
                             )}
                         </div>
@@ -72,6 +78,7 @@ export default class Entry extends PureComponent {
                                     parentKey={key_}
                                     parentValue={value}
                                     searchTerm={searchTerm}
+                                    collapseTerm={collapseTerm}
                                 />
                             )}
                         </div>
@@ -117,9 +124,9 @@ export default class Entry extends PureComponent {
                             className={cns('ref', {error: !ref_})}
                             data-tooltip={ref_ && ref_.keypath.join('.')}
                             title={ref_ && ref_.keypath.join('.')}
-                            >
-                                <Icon icon={linkIcon} />
-                                {ref_ ? 'ref' : 'missing ref'}
+                        >
+                            <Icon icon={linkIcon} />
+                            {ref_ ? 'ref' : 'missing ref'}
                         </a> :
                         null
                     }
@@ -171,6 +178,10 @@ export default class Entry extends PureComponent {
 
     toggle = (e) => {
         e.stopPropagation();
-        this.setState({expanded: !this.state.expanded});
+        this.setState({
+            expanded: this.state.expanded !== undefined ?
+                !this.state.expanded :
+                false
+        });
     }
 }
