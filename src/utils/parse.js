@@ -53,7 +53,7 @@ export function parse(json) {
     // reset _index
     _index = {};
 
-    // walk(obj);
+    walk(obj);
 
     return obj;
 }

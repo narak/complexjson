@@ -39,6 +39,8 @@ export default class Entry extends PureComponent {
                                 <Entry key={i}
                                     key_={i}
                                     value={v}
+                                    parentKey={key_}
+                                    parentValue={value}
                                     searchTerm={searchTerm}
                                 />
                             )}
@@ -67,6 +69,8 @@ export default class Entry extends PureComponent {
                                 <Entry key={k}
                                     key_={k}
                                     value={value[k]}
+                                    parentKey={key_}
+                                    parentValue={value}
                                     searchTerm={searchTerm}
                                 />
                             )}
@@ -85,7 +89,10 @@ export default class Entry extends PureComponent {
                 valueCode = 'undefined';
 
             } else if (typeof value === 'string') {
-                isRef = isUuid(value) && key_ !== 'uuid';
+
+                const parentValue = this.props.parentValue;
+                isRef = parentValue.kind && parentValue.uuid && parentValue.name &&
+                    key_ === 'uuid';
                 valueCode = value;
 
             } else {
