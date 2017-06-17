@@ -13,11 +13,11 @@ html {
 body {
     height: 100%;
     margin: 0;
-    padding: 10px 40px;
+    padding: 10px 30px;
     min-width: 1080px;
 
     text-rendering: optimizeLegibility;
-    font: 1rem 'Roboto Mono', monospace;
+    font: 90% 'Roboto Mono', monospace;
     color: #D8DEE9;
     font-weight: 300;
     line-height: 1.45;
@@ -150,30 +150,22 @@ select:focus {
 .arrow-down {
     @extend .arrow-base;
     border-color: #D8DEE9 transparent transparent;
-    border-width: 6px 4px 0;
-    margin-left: -16px;
-    margin-right: 6px;
+    border-width: 6px 3px 0;
 }
 .arrow-up {
     @extend .arrow-base;
     border-color: transparent transparent #D8DEE9;
-    border-width: 0 4px 6px;
-    margin-left: -16px;
-    margin-right: 6px;
+    border-width: 0 3px 6px;
 }
 .arrow-left {
     @extend .arrow-base;
     border-color: transparent #D8DEE9 transparent transparent;
-    border-width: 4px 6px 4px 0;
-    margin-left: -14px;
-    margin-right: 6px;
+    border-width: 3px 6px 3px 0;
 }
 .arrow-right {
     @extend .arrow-base;
     border-color: transparent transparent transparent #D8DEE9;
-    border-width: 4px 0 4px 6px;
-    margin-left: -14px;
-    margin-right: 6px;
+    border-width: 3px 0 3px 6px;
 }
 
 /**

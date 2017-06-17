@@ -1,9 +1,12 @@
 
 .indent {
-    margin-left: 10px;
+    padding-left: 24px;
+    margin: 2px;
+    border-left: 1px dotted #505a67;
 }
 
 .entry {
+    position: relative;
     color: #C0C5CE;
 
     &:hover {
@@ -14,6 +17,21 @@
         > .value {
             color: #fff;
         }
+    }
+}
+
+.key {
+    > .arrow-right,
+    > .arrow-down {
+        position: absolute;
+    },
+    > .arrow-down {
+        top: 6px;
+        left: -15px;
+    }
+    > .arrow-right {
+        top: 5px;
+        left: -14px;
     }
 }
 

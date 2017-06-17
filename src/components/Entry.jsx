@@ -102,7 +102,6 @@ export default class Entry extends PureComponent {
 
         // If key_ is not present, its the root entry.
         const cls = cns('entry', {
-            indent: key_ !== undefined,
             nested
         });
 
