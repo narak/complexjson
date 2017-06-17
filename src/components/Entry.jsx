@@ -32,7 +32,7 @@ export default class Entry extends PureComponent {
 
             } else {
                 valueCode = (
-                    <span>
+                    <span className="nested">
                         {'['}
                         <div className="indent">
                             {value.map((v, i) =>
@@ -163,6 +163,7 @@ export default class Entry extends PureComponent {
                     </span> :
                     null
                 }
+
                 {valueCode}
             </div>
         );
