@@ -1,11 +1,22 @@
 
+.app-container {
+    padding: 75px 20px 20px;
+}
+
 .actions {
-    margin: 18px 0;
+    position: fixed;
+    padding: 30px 20px 20px;
+    margin: 0;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(28, 40, 55, 0.6);
+    z-index: 10;
 }
 
 .editor-tabs {
     position: absolute;
-    top: 16px;
+    top: 23px;
     right: 50px;
     color: #65737E;
     font-size: .8em;
@@ -37,3 +48,7 @@
     color: #F99157;
 }
 
+.search-field {
+    width: 500px;
+    display: inline-block;
+}

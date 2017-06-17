@@ -27,7 +27,7 @@ export default class App extends PureComponent {
     state = {
         objects: __objects,
         currentIndex: __currentIndex,
-        isEditing: true,
+        isEditing: !__objects[__currentIndex],
     }
 
     render() {
@@ -47,7 +47,7 @@ export default class App extends PureComponent {
             };
 
             return (
-                <div>
+                <div className="app-container">
                     <div className="actions">
                         <button type="button" className="primary" onClick={this.onParse}>Parse</button>
 
@@ -66,8 +66,17 @@ export default class App extends PureComponent {
 
         } else {
             return (
-                <div>
+                <div className="app-container">
                     <div className="actions">
+                        <div className="search-field">
+                            <input name="search_field"
+                                type="text"
+                                placeholder="Search (regex works)"
+                                onKeyUp={this.onApplySearch}
+                                onBlur={this.onChangeSearch}
+                                />
+                        </div>
+
                         <div className="editor-tabs">
                             <button type="button" onClick={this.onEdit} className="edit-button">
                                 <Icon icon={pencilIcon} />
@@ -76,10 +85,20 @@ export default class App extends PureComponent {
                             {editorTabs}
                         </div>
                     </div>
-                    <Entry value={obj} />
+                    <Entry value={obj} searchTerm={this.state.searchTerm} />
                 </div>
             );
         }
+    }
+
+    onApplySearch = (e) => {
+        if (e.keyCode === 13) {
+            this.onChangeSearch(e);
+        }
+    }
+
+    onChangeSearch = (e) => {
+        this.setState({ searchTerm: e.target.value ? new RegExp(e.target.value) : null});
     }
 
     onChangeTab = (currentIndex) => {

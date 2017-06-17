@@ -15,7 +15,7 @@ export default class Entry extends PureComponent {
     }
 
     render() {
-        const { value, key_ } = this.props;
+        const { value, key_, searchTerm } = this.props;
         const { expanded } = this.state;
 
         let nested;
@@ -35,7 +35,13 @@ export default class Entry extends PureComponent {
                     <span>
                         {'['}
                         <div className="indent">
-                            {value.map((v, i) => <Entry key={i} key_={i} value={v} />)}
+                            {value.map((v, i) =>
+                                <Entry key={i}
+                                    key_={i}
+                                    value={v}
+                                    searchTerm={searchTerm}
+                                />
+                            )}
                         </div>
                         {']'}
                     </span>
@@ -57,7 +63,13 @@ export default class Entry extends PureComponent {
                     <span className="nested">
                         {'{'}
                         <div className="indent">
-                            {keys.map(k => <Entry key={k} key_={k} value={value[k]} />)}
+                            {keys.map(k =>
+                                <Entry key={k}
+                                    key_={k}
+                                    value={value[k]}
+                                    searchTerm={searchTerm}
+                                />
+                            )}
                         </div>
                         {'}'}
                     </span>
@@ -82,9 +94,17 @@ export default class Entry extends PureComponent {
 
             const ref_ = isRef ? ref(valueCode) : null;
 
+            let matched = false;
+            if (searchTerm && valueCode && typeof valueCode === 'string') {
+                matched = searchTerm.test(valueCode);
+            }
+
             valueCode = (
                 <span className="value">
-                    {valueCode}
+                    {matched ?
+                        <strong className="search-matched">{valueCode}</strong> :
+                        valueCode
+                    }
                     {isRef ?
                         <a href={'#' + value}
                             className={cns('ref', {error: !ref_})}
@@ -110,6 +130,11 @@ export default class Entry extends PureComponent {
             'arrow-down': !expanded,
         });
 
+        let matched = false;
+        if (searchTerm && key_ && typeof key_ === 'string') {
+            matched = searchTerm.test(key_);
+        }
+
         return (
             <div className={cls}>
                 {nested && value.uuid ?
@@ -123,7 +148,11 @@ export default class Entry extends PureComponent {
                             <span className={arrowCls} /> :
                             null
                         }
-                        {key_}:&nbsp;
+                        {matched ?
+                            <strong className="search-matched">{key_}</strong> :
+                            key_
+                        }
+                        :&nbsp;
                     </span> :
                     null
                 }
